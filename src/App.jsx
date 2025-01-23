@@ -1,12 +1,24 @@
-import "./App.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import AppLayout from "./ui/AppLayout";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      refetchOnMount: false,
+    },
+  },
+});
 
 function App() {
   return (
-    <>
-      <h1 className="font-brandFont text-3xl md:text-4xl lg:text-6xl text-red-600">
-        Take Time
-      </h1>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <AppLayout />
+    </QueryClientProvider>
   );
 }
 
