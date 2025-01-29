@@ -33,3 +33,16 @@ export async function getShowById(id, showType) {
 
   return response.json();
 }
+
+export async function getSeasonInfoById(id, seasonNumber) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}`,
+    options
+  );
+
+  if (!response.ok) {
+    throw new Error("API error");
+  }
+
+  return response.json();
+}
