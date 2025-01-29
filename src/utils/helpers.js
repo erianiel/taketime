@@ -1,4 +1,5 @@
 import { POSTER_PATH_BASE_URL, SEARCH_TYPE } from "../services/tmdb";
+import { TIME_UNITS } from "./consts";
 
 export const formatVoteRate = (value) =>
   new Intl.NumberFormat("en", {
@@ -30,10 +31,10 @@ export const formatRuntime = (minutes) => {
 export const getCompletionDate = ({
   runtime,
   time,
-  unit = "hour",
-  cadence = "day",
+  unit = TIME_UNITS.HOUR,
+  cadence = TIME_UNITS.DAY,
 }) => {
-  const minutes = unit === "hour" ? time * 60 : time;
+  const minutes = unit === TIME_UNITS.HOUR ? time * 60 : time;
 
   const unitDurations = {
     day: 1,
