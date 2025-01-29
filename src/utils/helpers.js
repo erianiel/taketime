@@ -27,6 +27,28 @@ export const formatRuntime = (minutes) => {
   return { years, months, days, hours, minutes };
 };
 
+export const getCompletionDate = ({
+  runtime,
+  time,
+  unit = "hour",
+  cadence = "day",
+}) => {
+  const minutes = unit === "hour" ? time * 60 : time;
+
+  const unitDurations = {
+    day: 1,
+    week: 7,
+    month: 30,
+  };
+
+  const daysNeeded = (runtime / minutes) * unitDurations[cadence];
+
+  const completionDate = new Date();
+  completionDate.setDate(completionDate.getDate() + daysNeeded);
+
+  return completionDate;
+};
+
 export const getShowInfo = (item, showType) => {
   if (!item) return {};
 
