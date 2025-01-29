@@ -79,11 +79,12 @@ function InputSearch({ selectedId, showType }) {
       {results?.results.length && (
         <ul className="p-2 max-h-80 w-80 md:w-96 overflow-y-auto rounded-lg bord-solid bg-red-50">
           {isLoading && <span>Loading...</span>}
-          {results?.results?.map((r) => (
+          {results?.results?.map((item) => (
             <SearchItem
-              result={r}
-              key={r.id}
+              item={item}
+              key={item.id}
               onSelectItem={handleSelectResult}
+              showType={showType}
             />
           ))}
           {error && <span>{error.message}</span>}
