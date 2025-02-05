@@ -11,7 +11,7 @@ function AppLayout() {
     <div className="h-screen p-6 bg-gradient-to-br from-red-200 to-violet-200">
       <div className="h-full flex flex-col items-center p-2 border-2 border-gray-600">
         <Header />
-        <InputSearch selectedId={selectedId} showType={showType} />
+        <InputSearch />
         {selectedId.value && (
           <FilmSection selectedId={selectedId} showType={showType} />
         )}

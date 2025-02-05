@@ -1,7 +1,7 @@
 import { formatVoteRate, getShowInfo } from "../utils/helpers";
 
-function SearchItem({ item, onSelectItem, showType }) {
-  const show = getShowInfo(item, showType.value);
+function SearchItem({ item, onSelectItem, selectedShowType }) {
+  const show = getShowInfo(item, selectedShowType);
 
   return (
     <li
