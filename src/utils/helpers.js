@@ -6,26 +6,32 @@ export const formatVoteRate = (value) =>
     maximumSignificantDigits: 2,
   }).format(value);
 
-export const formatRuntime = (minutes) => {
-  if (!minutes) return { years: 0, months: 0, days: 0, hours: 0, minutes: 0 };
+export const formattedDate = (date) => {
+  let option = {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  };
 
-  const units = {
-    year: 365 * 24 * 60,
-    month: 30 * 24 * 60,
+  const formatDate = new Intl.DateTimeFormat("en-US", option).format(date);
+
+  return formatDate;
+};
+
+export const formatRuntime = (minutes) => {
+  if (!minutes) return { days: 0, hours: 0, minutes: 0 };
+
+  const minutesPerUnit = {
     day: 24 * 60,
     hour: 60,
   };
 
-  const years = Math.floor(minutes / units.year);
-  minutes %= units.year;
-  const months = Math.floor(minutes / units.month);
-  minutes %= units.month;
-  const days = Math.floor(minutes / units.day);
-  minutes %= units.day;
-  const hours = Math.floor(minutes / units.hour);
-  minutes %= units.hour;
+  const days = Math.floor(minutes / minutesPerUnit.day);
+  minutes %= minutesPerUnit.day;
+  const hours = Math.floor(minutes / minutesPerUnit.hour);
+  minutes %= minutesPerUnit.hour;
 
-  return { years, months, days, hours, minutes };
+  return { days, hours, minutes };
 };
 
 export const getCompletionDate = ({
