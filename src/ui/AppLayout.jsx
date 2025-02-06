@@ -8,8 +8,8 @@ function AppLayout() {
   useSignals();
 
   return (
-    <div className="h-screen p-6 bg-gradient-to-br from-red-200 to-violet-200">
-      <div className="h-full flex flex-col items-center p-2 border-2 border-gray-600">
+    <div className="h-screen p-6 bg-[#f4efe7]">
+      <div className="h-full flex flex-col items-center p-2">
         <Header />
         <InputSearch />
         {selectedId.value && (

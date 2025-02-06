@@ -24,13 +24,17 @@ function InputSearch() {
   function handleSelectResult(id) {
     selectedId.value = id;
     showType.value = selectedShowType;
+    setSearchTerm("");
     setIsItemClicked(!isItemClicked);
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <fieldset className="flex gap-3 self-end">
-        <div className="flex items-center gap-1">
+    <div className="relative h-[6rem] flex flex-col gap-2">
+      <fieldset className="flex gap-5 self-end">
+        <label
+          className="flex items-center gap-1 peer-checked:text-sky-700 text-sm font-semibold"
+          htmlFor="movie"
+        >
           <input
             className="peer hidden"
             type="radio"
@@ -42,17 +46,13 @@ function InputSearch() {
               setSearchTerm("");
             }}
           />
-          <div className="w-4 h-4 bg-white peer-checked:bg-cyan-600 shadow border-2 border-gray-300 rounded-full">
-            {" "}
-          </div>
-          <label
-            className="peer-checked:text-sky-700 text-sm font-semibold"
-            htmlFor="movie"
-          >
-            Movie
-          </label>
-        </div>
-        <div className="flex items-center gap-1">
+          <div className="w-4 h-4 bg-white peer-checked:bg-blue-400 shadow border-2 border-gray-300 rounded-full"></div>
+          Movie
+        </label>
+        <label
+          className="flex items-center gap-1 peer-checked:text-blue-400 text-sm font-semibold"
+          htmlFor="tvshow"
+        >
           <input
             className="peer hidden"
             type="radio"
@@ -64,20 +64,13 @@ function InputSearch() {
               setSearchTerm("");
             }}
           />
-          <div className="w-4 h-4 bg-white peer-checked:bg-cyan-600 shadow border-2 border-slate-300 focus:ring-sky-300 rounded-full">
-            {" "}
-          </div>
-          <label
-            className="peer-checked:text-sky-700 text-sm font-semibold"
-            htmlFor="tvshow"
-          >
-            Tv show
-          </label>
-        </div>
+          <div className="w-4 h-4 bg-stone-100 peer-checked:bg-blue-400 shadow border-2 border-slate-300 focus:ring-sky-300 rounded-full"></div>
+          Tv show
+        </label>
       </fieldset>
 
       <input
-        className="py-2 px-2 w-80 md:w-96 rounded-lg border-solid focus:outline-none focus:ring focus:ring-cyan-600 bg-red-50"
+        className="py-2 px-2 w-80 md:w-96 rounded-lg border border-solid border-slate-400 focus:outline-none focus:ring focus:ring-blue-400 bg-stone-50"
         type="text"
         placeholder={
           selectedShowType === SEARCH_TYPE.MOVIE
@@ -91,7 +84,7 @@ function InputSearch() {
         }}
       />
       {Boolean(results?.results.length) && !isItemClicked && (
-        <ul className="p-2 max-h-80 w-80 md:w-96 overflow-y-auto rounded-lg bord-solid bg-red-50">
+        <ul className="absolute top-20 z-[2] backdrop-blur-md p-2 max-h-80 w-80 md:w-96 overflow-y-auto rounded-lg bord-solid bg-opacity-70 bg-stone-50">
           {isLoading && <span>Loading...</span>}
           {results?.results?.map((item) => (
             <SearchItem

@@ -5,7 +5,7 @@ function SearchItem({ item, onSelectItem, selectedShowType }) {
 
   return (
     <li
-      className="flex gap-2 p-2 border-b-2 hover:bg-violet-50  border-stone-200"
+      className="flex gap-2 p-2 border-b-2 hover:bg-blue-100  border-stone-200"
       onClick={() => onSelectItem(show.id)}
     >
       <img className="h-20" src={show.posterPath} alt={`show's poster`} />

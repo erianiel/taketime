@@ -3,13 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: "Mulish, monospace",
+      sans: "DM Sans, sans-serif",
     },
 
     extend: {
-      fontFamily: {
-        brandFont: ["Holtwood\\ One\\ SC"],
-      },
       fontSize: {
         huge: ["80rem", { lineHeight: "1" }],
       },
