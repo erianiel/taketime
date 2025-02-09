@@ -30,12 +30,14 @@ function CalcBox({ runtime }) {
   };
 
   return (
-    <div className="p-2 flex flex-col gap-4">
-      <h3>Let&apos;s take time to watch it!</h3>
+    <div className="py-8 px-5 h-50 flex flex-col gap-4">
+      <h3 className="text-neutral-800 font-semibold">
+        Let&apos;s take time to watch it!
+      </h3>
       <form onChange={handleSubmit(calculateCompletionData)}>
         <div className="flex gap-2">
           <input
-            className="w-16 px-1 rounded-md border-solid focus:outline-none focus:ring focus:ring-cyan-600 bg-red-50"
+            className="w-16 px-1 rounded-md border-solid focus:outline-none focus:ring focus:ring-cyan-600 bg-stone-50"
             type="number"
             min="1"
             id="time"
@@ -76,7 +78,7 @@ function CalcBox({ runtime }) {
             })}
           />
           <select
-            className="px-1 rounded-md border-solid focus-outline-none focus-ring focus:ring-cyan-600 bg-red-50"
+            className="px-1 rounded-md border-solid focus-outline-none focus-ring focus:ring-cyan-600 bg-stone-50"
             name="unit"
             {...register("unit", {
               required: "This field is required",
@@ -89,7 +91,7 @@ function CalcBox({ runtime }) {
           <p>per</p>
 
           <select
-            className="px-1 rounded-md border-solid focus-outline-none focus-ring focus:ring-cyan-600 bg-red-50"
+            className="px-1 rounded-md border-solid focus-outline-none focus-ring focus:ring-cyan-600 bg-stone-50"
             name="cadence"
             {...register("cadence", {
               required: "This field is required",

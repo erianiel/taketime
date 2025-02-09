@@ -5,12 +5,12 @@ function ItemDetails({ showType, isLoading, show, runtime }) {
   const { days, hours, minutes } = formatRuntime(runtime);
 
   return (
-    <div className="p-2 h-30 w-80 md:w-96 rounded-lg bg-opacity-40 bg-white">
+    <div className="p-4 h-30 w-80 md:w-96 rounded-lg border border-slate-600 bg-[#e9dfd2]">
       {isLoading ? (
         <span>is Loading</span>
       ) : (
-        <div className="flex gap-4">
-          <img className="h-18 rounded-md" src={show.posterPath} />
+        <div className="p-2 h-30 flex gap-4 rounded-xl bg-stone-50">
+          <img className="h-30 rounded-md" src={show.posterPath} />
           <div className="flex flex-col gap-3 justify-evenly">
             <div>
               <h3 className="font-bold">{show.title}</h3>

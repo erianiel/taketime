@@ -20,7 +20,7 @@ function FilmSection({ selectedId, showType }) {
     showType.value === SEARCH_TYPE.MOVIE ? show.runtime : totalRuntime;
 
   return (
-    <section className="p-4 flex flex-col items-center lg:items-start lg:flex-row gap-8">
+    <section className="p-4 flex flex-col items-center gap-8">
       <ItemDetails
         showType={showType}
         isLoading={loading}

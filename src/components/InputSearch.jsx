@@ -84,7 +84,7 @@ function InputSearch() {
         }}
       />
       {Boolean(results?.results.length) && !isItemClicked && (
-        <ul className="absolute top-20 z-[2] backdrop-blur-md p-2 max-h-80 w-80 md:w-96 overflow-y-auto rounded-lg bord-solid bg-opacity-70 bg-stone-50">
+        <ul className="absolute top-20 z-20 backdrop-blur-md p-2 max-h-80 w-80 md:w-96 overflow-y-auto rounded-lg bord-solid bg-opacity-75 bg-stone-50">
           {isLoading && <span>Loading...</span>}
           {results?.results?.map((item) => (
             <SearchItem
