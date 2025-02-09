@@ -1,4 +1,4 @@
-import { SEARCH_TYPE } from "../services/tmdb";
+import { SHOW_TYPE } from "../utils/consts";
 import { formatRuntime } from "../utils/helpers";
 
 function ItemDetails({ showType, isLoading, show, runtime }) {
@@ -17,7 +17,7 @@ function ItemDetails({ showType, isLoading, show, runtime }) {
 
               <p className="text-sm text-stone-600">
                 {show.release}{" "}
-                {showType.value === SEARCH_TYPE.TV ? (
+                {showType.value === SHOW_TYPE.TV ? (
                   <>
                     <span>- {show.lastEpisode} </span>
                     {show.inProduction ? (
@@ -35,7 +35,7 @@ function ItemDetails({ showType, isLoading, show, runtime }) {
                   ""
                 )}
               </p>
-              {showType.value === SEARCH_TYPE.TV && (
+              {showType.value === SHOW_TYPE.TV && (
                 <p className="text-sm text-stone-600">
                   total seasons: {show.numSeasons}
                 </p>

@@ -1,4 +1,4 @@
-import { SEARCH_TYPE } from "../services/tmdb";
+import { SHOW_TYPE } from "../utils/consts";
 import { getShowInfo } from "../utils/helpers";
 import CalcBox from "./CalcBox";
 import ItemDetails from "./ItemDetails";
@@ -15,9 +15,9 @@ function FilmSection({ selectedId, showType }) {
     show.numSeasons
   );
   const loading =
-    showType.value === SEARCH_TYPE.MOVIE ? isLoading : isRuntimeLoading;
+    showType.value === SHOW_TYPE.MOVIE ? isLoading : isRuntimeLoading;
   const runtime =
-    showType.value === SEARCH_TYPE.MOVIE ? show.runtime : totalRuntime;
+    showType.value === SHOW_TYPE.MOVIE ? show.runtime : totalRuntime;
 
   return (
     <section className="p-4 flex flex-col items-center gap-8">

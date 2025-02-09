@@ -1,5 +1,5 @@
-import { POSTER_PATH_BASE_URL, SEARCH_TYPE } from "../services/tmdb";
-import { TIME_UNITS } from "./consts";
+import { POSTER_PATH_BASE_URL } from "../services/tmdb";
+import { SHOW_TYPE, TIME_UNITS } from "./consts";
 
 export const formatVoteRate = (value) =>
   new Intl.NumberFormat("en", {
@@ -67,13 +67,13 @@ export const getShowInfo = (item, showType) => {
   const lastEpisode = item.last_air_date?.slice(0, 4);
   const inProduction = item.in_production;
 
-  if (showType === SEARCH_TYPE.MOVIE) {
+  if (showType === SHOW_TYPE.MOVIE) {
     title = item.original_title;
     runtime = item.runtime;
     release = item.release_date?.slice(0, 4);
   }
 
-  if (showType === SEARCH_TYPE.TV) {
+  if (showType === SHOW_TYPE.TV) {
     title = item.name;
     release = item.first_air_date?.slice(0, 4);
   }

@@ -5,3 +5,8 @@ export const TIME_UNITS = {
   WEEK: "week",
   MONTH: "month",
 };
+
+export const SHOW_TYPE = {
+  MOVIE: "movie",
+  TV: "tv",
+};

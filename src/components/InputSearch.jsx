@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { SEARCH_TYPE } from "../services/tmdb";
 import InputRadio from "../ui/InputRadio";
 import { selectedId, showType } from "../utils/signalsStore";
 import SearchItem from "./SearchItem";
 import { useSearch } from "./useSearch";
+import { SHOW_TYPE } from "../utils/consts";
 
 function InputSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
-  const [selectedShowType, setSelectedShowType] = useState(SEARCH_TYPE.MOVIE);
+  const [selectedShowType, setSelectedShowType] = useState(SHOW_TYPE.MOVIE);
   const { isPending, results } = useSearch(
     debouncedSearchTerm,
     selectedShowType
@@ -36,15 +36,15 @@ function InputSearch() {
         <InputRadio
           id="movie"
           label="Movie"
-          value={SEARCH_TYPE.MOVIE}
-          checked={selectedShowType === SEARCH_TYPE.MOVIE}
+          value={SHOW_TYPE.MOVIE}
+          checked={selectedShowType === SHOW_TYPE.MOVIE}
           onChange={(e) => handleOnSearchTypeChange(e.target.value)}
         />
         <InputRadio
           id="tvshow"
           label="TV Show"
-          value={SEARCH_TYPE.TV}
-          checked={selectedShowType === SEARCH_TYPE.TV}
+          value={SHOW_TYPE.TV}
+          checked={selectedShowType === SHOW_TYPE.TV}
           onChange={(e) => handleOnSearchTypeChange(e.target.value)}
         />
       </fieldset>
@@ -53,7 +53,7 @@ function InputSearch() {
         className="py-2 px-2 w-80 md:w-96 rounded-lg border border-solid border-slate-400 focus:outline-none focus:ring focus:ring-blue-400 bg-stone-50"
         type="text"
         placeholder={
-          selectedShowType === SEARCH_TYPE.MOVIE
+          selectedShowType === SHOW_TYPE.MOVIE
             ? "Search movies"
             : "Search TV shows"
         }

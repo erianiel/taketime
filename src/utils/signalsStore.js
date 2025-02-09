@@ -1,6 +1,6 @@
 import { signal } from "@preact/signals-react";
-import { SEARCH_TYPE } from "../services/tmdb";
+import { SHOW_TYPE } from "./consts";
 
 export const selectedId = signal();
 
-export const showType = signal(SEARCH_TYPE.MOVIE);
+export const showType = signal(SHOW_TYPE.MOVIE);
