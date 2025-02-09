@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 import InputRadio from "../ui/InputRadio";
 import { selectedId, showType } from "../utils/signalsStore";
-import SearchItem from "./SearchItem";
 import { useSearch } from "./useSearch";
 import { SHOW_TYPE } from "../utils/consts";
+import InputSearchResults from "./InputSearchResults";
+import { useOutsideClick } from "./useOutsideClick";
 
 function InputSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [selectedShowType, setSelectedShowType] = useState(SHOW_TYPE.MOVIE);
+  const [isOpen, setIsOpen] = useState(true);
+
   const { isPending, results } = useSearch(
     debouncedSearchTerm,
     selectedShowType
   );
+  const ref = useOutsideClick(() => setIsOpen(false));
 
   useEffect(() => {
     const timeout = setTimeout(() => setDebouncedSearchTerm(searchTerm), 1000);
     return () => clearTimeout(timeout);
   }, [searchTerm]);
 
-  function handleSelectResult(id) {
+  function handleOnSelectItem(id) {
     selectedId.value = id;
     showType.value = selectedShowType;
     setSearchTerm("");
@@ -31,7 +35,7 @@ function InputSearch() {
   }
 
   return (
-    <div className="relative h-24 flex flex-col gap-2">
+    <div ref={ref} className="relative h-24 flex flex-col gap-2">
       <fieldset className="flex gap-5 self-end">
         <InputRadio
           id="movie"
@@ -59,24 +63,15 @@ function InputSearch() {
         }
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onFocus={() => setIsOpen(true)}
       />
-      {searchTerm && (
-        <ul className="absolute top-20 z-20 backdrop-blur-md p-2 max-h-80 w-80 md:w-96 overflow-y-auto rounded-lg bord-solid bg-opacity-75 bg-stone-50">
-          {isPending ? (
-            <span>Loading...</span>
-          ) : !isPending && results?.results.length === 0 ? (
-            <span>Nothing found! 🙁</span>
-          ) : (
-            results?.results?.map((item) => (
-              <SearchItem
-                item={item}
-                key={item.id}
-                onSelectItem={handleSelectResult}
-                selectedShowType={selectedShowType}
-              />
-            ))
-          )}
-        </ul>
+      {searchTerm && isOpen && (
+        <InputSearchResults
+          isPending={isPending}
+          results={results?.results}
+          onSelectItem={handleOnSelectItem}
+          selectedShowType={selectedShowType}
+        />
       )}
     </div>
   );
