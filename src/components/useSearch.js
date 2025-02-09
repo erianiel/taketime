@@ -3,7 +3,7 @@ import { search } from "../services/apiMovies";
 
 export function useSearch(query, searchType) {
   const {
-    isLoading,
+    isPending,
     error,
     data: results,
   } = useQuery({
@@ -12,5 +12,5 @@ export function useSearch(query, searchType) {
     enabled: !!query,
   });
 
-  return { isLoading, error, results };
+  return { isPending, error, results };
 }
