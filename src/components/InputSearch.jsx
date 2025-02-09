@@ -8,16 +8,13 @@ function InputSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [selectedShowType, setSelectedShowType] = useState(SEARCH_TYPE.MOVIE);
-  const [isItemClicked, setIsItemClicked] = useState(false);
-  const { isLoading, results } = useSearch(
+  const { isPending, results } = useSearch(
     debouncedSearchTerm,
     selectedShowType
   );
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setDebouncedSearchTerm(searchTerm);
-    }, 1000);
+    const timeout = setTimeout(() => setDebouncedSearchTerm(searchTerm), 1000);
     return () => clearTimeout(timeout);
   }, [searchTerm]);
 
@@ -25,7 +22,11 @@ function InputSearch() {
     selectedId.value = id;
     showType.value = selectedShowType;
     setSearchTerm("");
-    setIsItemClicked(!isItemClicked);
+  }
+
+  function handleOnSearchTypeChange(type) {
+    setSelectedShowType(type);
+    setSearchTerm("");
   }
 
   return (
@@ -41,10 +42,7 @@ function InputSearch() {
             id="movie"
             value={SEARCH_TYPE.MOVIE}
             checked={selectedShowType === SEARCH_TYPE.MOVIE}
-            onChange={(e) => {
-              setSelectedShowType(e.target.value);
-              setSearchTerm("");
-            }}
+            onChange={(e) => handleOnSearchTypeChange(e.target.value)}
           />
           <div className="w-4 h-4 bg-white peer-checked:bg-blue-400 shadow border-2 border-gray-300 rounded-full"></div>
           Movie
@@ -59,10 +57,7 @@ function InputSearch() {
             id="tvshow"
             value={SEARCH_TYPE.TV}
             checked={selectedShowType === SEARCH_TYPE.TV}
-            onChange={(e) => {
-              setSelectedShowType(e.target.value);
-              setSearchTerm("");
-            }}
+            onChange={(e) => handleOnSearchTypeChange(e.target.value)}
           />
           <div className="w-4 h-4 bg-stone-100 peer-checked:bg-blue-400 shadow border-2 border-slate-300 focus:ring-sky-300 rounded-full"></div>
           Tv show
@@ -78,26 +73,26 @@ function InputSearch() {
             : "Search Tv show..."
         }
         value={searchTerm}
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-          setIsItemClicked(false);
-        }}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {Boolean(results?.results.length) && !isItemClicked && (
+      {searchTerm && (
         <ul className="absolute top-20 z-20 backdrop-blur-md p-2 max-h-80 w-80 md:w-96 overflow-y-auto rounded-lg bord-solid bg-opacity-75 bg-stone-50">
-          {isLoading && <span>Loading...</span>}
-          {results?.results?.map((item) => (
-            <SearchItem
-              item={item}
-              key={item.id}
-              onSelectItem={handleSelectResult}
-              selectedShowType={selectedShowType}
-            />
-          ))}
+          {isPending ? (
+            <span>Loading...</span>
+          ) : !isPending && results?.results.length === 0 ? (
+            <span>Nothing found! 🙁</span>
+          ) : (
+            results?.results?.map((item) => (
+              <SearchItem
+                item={item}
+                key={item.id}
+                onSelectItem={handleSelectResult}
+                selectedShowType={selectedShowType}
+              />
+            ))
+          )}
         </ul>
       )}
-
-      {results?.results.length === 0 && <span>Nothing found! 🙁</span>}
     </div>
   );
 }
