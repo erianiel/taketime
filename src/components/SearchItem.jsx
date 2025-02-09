@@ -11,10 +11,11 @@ function SearchItem({ item, onSelectItem, selectedShowType }) {
       <img className="h-20" src={show.posterPath} alt={`show's poster`} />
       <div className="flex flex-col">
         <span>{show.title}</span>
-        <span className="text-sm text-stone-600">{show.release}</span>
-        <span className="text-sm text-stone-600">{`vote: ${formatVoteRate(
-          show.voteAverage
-        )}`}</span>
+        <div className="flex gap-1 items-center text-sm text-stone-600">
+          <span>{show.release}</span>
+          <span>·</span>
+          <span>{formatVoteRate(show.voteAverage)}</span>
+        </div>
       </div>
     </li>
   );

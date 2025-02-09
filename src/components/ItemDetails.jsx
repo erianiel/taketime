@@ -16,13 +16,13 @@ function ItemDetails({ showType, isLoading, show, runtime }) {
               <h3 className="font-bold">{show.title}</h3>
 
               <p className="text-sm text-stone-600">
-                {show.release}{" "}
+                {show.release}
                 {showType.value === SHOW_TYPE.TV ? (
                   <>
                     <span>- {show.lastEpisode} </span>
                     {show.inProduction ? (
                       <>
-                        <span>🟢</span>{" "}
+                        <span>🟢 </span>
                         <span className="italic">in production</span>
                       </>
                     ) : (
@@ -37,7 +37,8 @@ function ItemDetails({ showType, isLoading, show, runtime }) {
               </p>
               {showType.value === SHOW_TYPE.TV && (
                 <p className="text-sm text-stone-600">
-                  total seasons: {show.numSeasons}
+                  {show.numSeasons}{" "}
+                  {show.numSeasons === 1 ? "season" : "seasons"}
                 </p>
               )}
             </div>
@@ -46,7 +47,7 @@ function ItemDetails({ showType, isLoading, show, runtime }) {
               {days}
               <span className="text-fuchsia-700">d</span> {hours}
               <span className="text-fuchsia-700">h</span> {minutes}
-              <span className="text-fuchsia-700">m</span>{" "}
+              <span className="text-fuchsia-700">m</span>
             </p>
           </div>
         </div>
