@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useSearch } from "./useSearch";
 import { SEARCH_TYPE } from "../services/tmdb";
-import SearchItem from "./SearchItem";
+import InputRadio from "../ui/InputRadio";
 import { selectedId, showType } from "../utils/signalsStore";
+import SearchItem from "./SearchItem";
+import { useSearch } from "./useSearch";
 
 function InputSearch() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,38 +31,22 @@ function InputSearch() {
   }
 
   return (
-    <div className="relative h-[6rem] flex flex-col gap-2">
+    <div className="relative h-24 flex flex-col gap-2">
       <fieldset className="flex gap-5 self-end">
-        <label
-          className="flex items-center gap-1 peer-checked:text-sky-700 text-sm font-semibold"
-          htmlFor="movie"
-        >
-          <input
-            className="peer hidden"
-            type="radio"
-            id="movie"
-            value={SEARCH_TYPE.MOVIE}
-            checked={selectedShowType === SEARCH_TYPE.MOVIE}
-            onChange={(e) => handleOnSearchTypeChange(e.target.value)}
-          />
-          <div className="w-4 h-4 bg-white peer-checked:bg-blue-400 shadow border-2 border-gray-300 rounded-full"></div>
-          Movie
-        </label>
-        <label
-          className="flex items-center gap-1 peer-checked:text-blue-400 text-sm font-semibold"
-          htmlFor="tvshow"
-        >
-          <input
-            className="peer hidden"
-            type="radio"
-            id="tvshow"
-            value={SEARCH_TYPE.TV}
-            checked={selectedShowType === SEARCH_TYPE.TV}
-            onChange={(e) => handleOnSearchTypeChange(e.target.value)}
-          />
-          <div className="w-4 h-4 bg-stone-100 peer-checked:bg-blue-400 shadow border-2 border-slate-300 focus:ring-sky-300 rounded-full"></div>
-          Tv show
-        </label>
+        <InputRadio
+          id="movie"
+          label="Movie"
+          value={SEARCH_TYPE.MOVIE}
+          checked={selectedShowType === SEARCH_TYPE.MOVIE}
+          onChange={(e) => handleOnSearchTypeChange(e.target.value)}
+        />
+        <InputRadio
+          id="tvshow"
+          label="TV Show"
+          value={SEARCH_TYPE.TV}
+          checked={selectedShowType === SEARCH_TYPE.TV}
+          onChange={(e) => handleOnSearchTypeChange(e.target.value)}
+        />
       </fieldset>
 
       <input
@@ -69,8 +54,8 @@ function InputSearch() {
         type="text"
         placeholder={
           selectedShowType === SEARCH_TYPE.MOVIE
-            ? "Search movies..."
-            : "Search Tv show..."
+            ? "Search movies"
+            : "Search TV shows"
         }
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
