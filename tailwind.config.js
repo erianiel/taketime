@@ -13,6 +13,9 @@ export default {
       height: {
         screen: "100dvh",
       },
+      backgroundColor: {
+        appBgColor: "#f4efe7",
+      },
     },
   },
   plugins: [],
