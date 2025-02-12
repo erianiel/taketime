@@ -14,7 +14,7 @@ function InputSearch() {
 
   const { isPending, results } = useSearch(
     debouncedSearchTerm,
-    selectedShowType
+    selectedShowType,
   );
   const ref = useOutsideClick(() => setIsOpen(false));
 
@@ -35,8 +35,8 @@ function InputSearch() {
   }
 
   return (
-    <div ref={ref} className="relative h-24 flex flex-col gap-2">
-      <fieldset className="flex gap-5 self-end">
+    <div ref={ref} className="relative flex h-24 flex-col gap-2">
+      <fieldset className="flex gap-5 self-start">
         <InputRadio
           id="movie"
           label="Movie"
@@ -54,7 +54,7 @@ function InputSearch() {
       </fieldset>
 
       <input
-        className="py-2 px-2 w-80 md:w-96 rounded-lg border border-solid border-slate-400 focus:outline-none focus:ring focus:ring-blue-400 bg-stone-50"
+        className="w-90 h-10 rounded-lg border border-solid border-slate-400 bg-stone-50 py-2 pl-2 focus:outline-none focus:ring-2 focus:ring-blue-400 md:w-96"
         type="text"
         placeholder={
           selectedShowType === SHOW_TYPE.MOVIE

@@ -1,43 +1,42 @@
 import { useForm } from "react-hook-form";
 import { TIME_UNITS } from "../utils/consts";
-import { formattedDate, getCompletionDate } from "../utils/helpers";
-import { useState } from "react";
+import { completionDateData } from "../utils/signalsStore";
 
-function CalcBox({ runtime }) {
-  const [completionDate, setCompletionDate] = useState();
+function CalcBox() {
   const { register, handleSubmit, formState } = useForm({
-    defaultValues: {
-      unit: TIME_UNITS.MINUTE,
-      cadence: TIME_UNITS.DAY,
-    },
+    defaultValues: completionDateData.value,
     mode: "onChange",
   });
 
-  const validateMessage = "Please type a valid input";
+  const validateMessage = "Type a valid input";
 
   const { errors, isValid } = formState;
 
   const calculateCompletionData = (data) => {
     const { time, unit, cadence } = data;
-    const date = getCompletionDate({
-      runtime,
+
+    completionDateData.value = {
       time,
       unit,
       cadence,
-    });
-
-    setCompletionDate(formattedDate(date));
+    };
   };
 
+  console.log(completionDateData.value);
+
   return (
-    <div className="py-8 px-5 h-50 flex flex-col gap-4">
-      <h3 className="text-neutral-800 font-semibold">
-        Let&apos;s take time to watch it!
+    <div className="flex flex-col gap-2 pb-3 pl-0 pt-3">
+      <h3 className="text-md text-neutral-700 sm:text-lg">
+        How much time do you want to spend?
       </h3>
       <form onChange={handleSubmit(calculateCompletionData)}>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <input
-            className="w-16 px-1 rounded-md border-solid focus:outline-none focus:ring focus:ring-cyan-600 bg-stone-50"
+            className={`h-9 w-16 rounded-md border border-solid bg-stone-50 px-1 py-2 text-neutral-700 focus:outline-none focus:ring-2 ${
+              formState.errors.time
+                ? "border-pink-700 focus:ring-pink-700"
+                : "border-slate-400 focus:ring-blue-400"
+            }`}
             type="number"
             min="1"
             id="time"
@@ -46,12 +45,12 @@ function CalcBox({ runtime }) {
               required: "This field is required",
               min: {
                 value: 1,
-                message: "Please, type a valid number",
+                message: "Type a valid number",
               },
 
               maxLength: {
                 value: 3,
-                message: "Please, the number must be less than 4 digit",
+                message: "The number must be less than 4 digits",
               },
               validate: (value, formValues) => {
                 if (
@@ -78,20 +77,30 @@ function CalcBox({ runtime }) {
             })}
           />
           <select
-            className="px-1 rounded-md border-solid focus-outline-none focus-ring focus:ring-cyan-600 bg-stone-50"
+            className="custom-select w-full min-w-2"
             name="unit"
             {...register("unit", {
               required: "This field is required",
             })}
           >
-            <option value={TIME_UNITS.MINUTE}>minutes</option>
-            <option value={TIME_UNITS.HOUR}>hours</option>
+            <option
+              className="bg-stone-50 bg-opacity-75"
+              value={TIME_UNITS.MINUTE}
+            >
+              minutes
+            </option>
+            <option
+              className="bg-stone-50 bg-opacity-75"
+              value={TIME_UNITS.HOUR}
+            >
+              hours
+            </option>
           </select>
 
           <p>per</p>
 
           <select
-            className="px-1 rounded-md border-solid focus-outline-none focus-ring focus:ring-cyan-600 bg-stone-50"
+            className="custom-select"
             name="cadence"
             {...register("cadence", {
               required: "This field is required",
@@ -103,15 +112,9 @@ function CalcBox({ runtime }) {
           </select>
         </div>
       </form>
-
       <div>
-        {completionDate && isValid ? (
-          <p>
-            You will finish for{" "}
-            <span className="font-bold text-fuchsia-500">{completionDate}</span>
-          </p>
-        ) : (
-          <span className="text-sm text-red-700">{errors?.time?.message}</span>
+        {!isValid && (
+          <span className="text-sm text-pink-700">{errors?.time?.message}</span>
         )}
       </div>
     </div>

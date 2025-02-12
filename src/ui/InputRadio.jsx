@@ -1,7 +1,7 @@
 function InputRadio({ id, label, value, checked, onChange }) {
   return (
     <label
-      className="flex items-center gap-1 peer-checked:text-sky-700 text-sm font-semibold"
+      className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-neutral-600 peer-checked:text-sky-700"
       htmlFor={id}
     >
       <input
@@ -12,7 +12,7 @@ function InputRadio({ id, label, value, checked, onChange }) {
         checked={checked}
         onChange={onChange}
       />
-      <div className="w-4 h-4 bg-white peer-checked:bg-blue-400 shadow border-2 border-gray-300 rounded-full"></div>
+      <div className="h-4 w-4 rounded-full border-2 border-gray-300 bg-white shadow peer-checked:bg-blue-400"></div>
       {label}
     </label>
   );

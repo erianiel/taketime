@@ -7,7 +7,7 @@ function InputSearchResults({
   selectedShowType,
 }) {
   return (
-    <ul className="absolute top-20 z-20 backdrop-blur-md p-2 max-h-80 w-80 md:w-96 overflow-y-auto rounded-lg bord-solid bg-opacity-75 bg-stone-50">
+    <ul className="scroll absolute top-20 z-20 max-h-80 w-80 overflow-y-auto rounded-lg border-solid bg-stone-50 bg-opacity-75 p-2 backdrop-blur-md md:w-96">
       {isPending ? (
         <span>Loading...</span>
       ) : !isPending && results?.length === 0 ? (
