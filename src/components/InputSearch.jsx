@@ -62,6 +62,7 @@ function InputSearch() {
             : "Search TV shows"
         }
         value={searchTerm}
+        autoFocus
         onChange={(e) => setSearchTerm(e.target.value)}
         onFocus={() => setIsOpen(true)}
       />
