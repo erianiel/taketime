@@ -10,6 +10,7 @@ import { useTvRuntime } from "./useTvRuntime";
 import { completionDateData } from "../utils/signalsStore";
 import { computed } from "@preact/signals-react";
 import ShowInfo from "./ShowInfo";
+import Loader from "../ui/Loader";
 
 function FilmSection({ selectedId, showType }) {
   const { isLoading, item } = useItemId(selectedId.value, showType.value);
@@ -43,9 +44,9 @@ function FilmSection({ selectedId, showType }) {
   const { days, hours, minutes } = formatRuntime(runtime);
 
   return (
-    <div className="h-30 w-90 rounded-lg border-4 border-neutral-300 bg-stone-100 p-3 md:w-96">
+    <div className="h-30 w-90 flex rounded-lg border-4 border-neutral-300 bg-stone-100 p-3 md:w-96">
       {isShowLoading ? (
-        <span>is Loading</span>
+        <Loader />
       ) : (
         <div className="flex gap-4">
           <img className="h-30 w-fit rounded-md" src={show.posterPath} />

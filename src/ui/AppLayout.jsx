@@ -9,7 +9,7 @@ function AppLayout() {
   useSignals();
 
   return (
-    <div className="bg-appBgColor h-screen p-6">
+    <div className="h-screen bg-appBgColor p-6">
       <div className="flex h-full flex-col items-center p-2">
         <Header />
         <div className="flex flex-col gap-1">

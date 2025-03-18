@@ -10,10 +10,14 @@
     scroll-behavior: smooth;
     scrollbar-color: #93c5fd #e7e5e4;
   }
-}
 
-@layer components {
-  .custom-select {
-    @apply block h-9 cursor-pointer rounded-md border border-solid border-slate-400 bg-stone-50 px-1 text-neutral-700 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400;
+  .scrollNone {
+    overflow: hidden;
+  }
+
+  @layer components {
+    .custom-select {
+      @apply block h-9 cursor-pointer rounded-md border border-solid border-slate-400 bg-stone-50 px-1 text-neutral-700 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400;
+    }
   }
 }

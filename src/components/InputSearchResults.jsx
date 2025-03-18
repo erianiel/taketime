@@ -1,3 +1,4 @@
+import Loader from "../ui/Loader";
 import SearchItem from "./SearchItem";
 
 function InputSearchResults({
@@ -7,9 +8,13 @@ function InputSearchResults({
   selectedShowType,
 }) {
   return (
-    <ul className="scroll absolute top-20 z-20 max-h-80 w-80 overflow-y-auto rounded-lg border-solid bg-stone-50 bg-opacity-75 p-2 backdrop-blur-md md:w-96">
+    <ul
+      className={`${(isPending || results?.length < 3) && "scrollNone"} scroll min-h-30 w-90 absolute top-20 z-30 max-h-80 overflow-y-auto rounded-lg border-solid bg-stone-50 bg-opacity-75 p-2 backdrop-blur-md md:w-96`}
+    >
       {isPending ? (
-        <span>Loading...</span>
+        <li>
+          <Loader />
+        </li>
       ) : !isPending && results?.length === 0 ? (
         <span>Nothing found! 🙁</span>
       ) : (
