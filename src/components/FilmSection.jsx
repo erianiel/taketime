@@ -44,7 +44,7 @@ function FilmSection({ selectedId, showType }) {
   const { days, hours, minutes } = formatRuntime(runtime);
 
   return (
-    <div className="h-30 w-90 flex rounded-lg border-4 border-neutral-300 bg-stone-100 p-3 md:w-96">
+    <div className="h-30 w-full rounded-lg border-4 border-neutral-300 bg-stone-100 p-3">
       {isShowLoading ? (
         <Loader />
       ) : (

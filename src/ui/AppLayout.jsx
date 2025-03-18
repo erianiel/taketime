@@ -9,8 +9,8 @@ function AppLayout() {
   useSignals();
 
   return (
-    <div className="h-screen bg-appBgColor p-6">
-      <div className="flex h-full flex-col items-center p-2">
+    <div className="flex h-screen flex-col bg-appBgColor p-6">
+      <div className="w-90 h-full items-center self-center p-2 md:w-96">
         <Header />
         <div className="flex flex-col gap-1">
           <CalcBox />

@@ -36,7 +36,7 @@ function InputSearch() {
 
   return (
     <div ref={ref} className="relative flex h-24 flex-col gap-2">
-      <fieldset className="flex gap-5 self-start">
+      <fieldset className="flex w-full gap-5">
         <InputRadio
           id="movie"
           label="Movie"
@@ -54,7 +54,7 @@ function InputSearch() {
       </fieldset>
 
       <input
-        className="w-90 h-10 rounded-lg border border-solid border-slate-400 bg-stone-50 pl-2 focus:outline-none focus:ring-2 focus:ring-blue-400 md:w-96"
+        className="h-10 w-full rounded-lg border border-solid border-slate-400 bg-stone-50 pl-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         type="text"
         placeholder={
           selectedShowType === SHOW_TYPE.MOVIE

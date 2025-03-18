@@ -22,7 +22,7 @@ function CalcBox() {
   };
 
   return (
-    <div className="flex flex-col gap-2 pb-3 pl-0 pt-3">
+    <div className="flex w-full flex-col gap-2 pb-3 pl-0">
       <h3 className="text-md text-neutral-700 sm:text-lg">
         How much time do you want to spend?
       </h3>
