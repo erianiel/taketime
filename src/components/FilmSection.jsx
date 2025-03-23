@@ -11,6 +11,7 @@ import { completionDateData } from "../utils/signalsStore";
 import { computed } from "@preact/signals-react";
 import ShowInfo from "./ShowInfo";
 import Loader from "../ui/Loader";
+import EmptyPoster from "../ui/EmptyPoster";
 
 function FilmSection({ selectedId, showType }) {
   const { isLoading, item } = useItemId(selectedId.value, showType.value);
@@ -49,7 +50,11 @@ function FilmSection({ selectedId, showType }) {
         <Loader />
       ) : (
         <div className="flex gap-4">
-          <img className="h-30 w-fit rounded-md" src={show.posterPath} />
+          {!show.posterPath ? (
+            <EmptyPoster size="md" />
+          ) : (
+            <img className="h-30 w-fit rounded-md" src={show.posterPath} />
+          )}
           <div className="flex flex-col justify-evenly gap-1">
             <div>
               <h3 className="font-bold text-neutral-800">{show.title}</h3>

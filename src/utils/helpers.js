@@ -59,7 +59,9 @@ export const getCompletionDate = ({
 export const getShowInfo = (item, showType) => {
   if (!item) return {};
 
-  let posterPath = `${POSTER_PATH_BASE_URL}${item.poster_path}`;
+  let posterPath = item.poster_path
+    ? `${POSTER_PATH_BASE_URL}${item.poster_path}`
+    : null;
   let title;
   let runtime;
   let release;
