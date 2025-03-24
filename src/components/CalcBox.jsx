@@ -31,7 +31,7 @@ function CalcBox() {
         onChange={handleSubmit(calculateCompletionData)}
       >
         <input
-          className={`h-9 w-16 rounded-md border border-solid bg-stone-50 px-1 py-2 text-neutral-700 focus:outline-none focus:ring-2 ${
+          className={`h-10 w-16 rounded-md border border-solid bg-stone-50 px-1 py-2 text-neutral-700 focus:outline-none focus:ring-2 ${
             formState.errors.time
               ? "border-pink-700 focus:ring-pink-700"
               : "border-slate-400 focus:ring-blue-400"

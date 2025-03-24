@@ -54,7 +54,7 @@ function InputSearch() {
       </fieldset>
 
       <input
-        className="h-10 w-full rounded-lg border border-solid border-slate-400 bg-stone-50 pl-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="h-12 w-full rounded-lg border border-solid border-slate-400 bg-stone-50 pl-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         type="text"
         placeholder={
           selectedShowType === SHOW_TYPE.MOVIE
