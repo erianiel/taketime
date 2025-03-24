@@ -2,7 +2,9 @@
 
 A web app that helps you calculate how long it will take to binge a show, based on your available watch time.
 
-![alt homepage](docs/img/homepage.png "Homepage")
+<p align="center">
+  <img src="docs/img/homepage.png" alt="Homepage" title="Homepage" />
+</p>
 
 ## ✨ Features
 
