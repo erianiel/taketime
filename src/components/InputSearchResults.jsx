@@ -24,7 +24,12 @@ function InputSearchResults({
         </li>
       );
 
-    if (!isPending && results?.length === 0) return <li>Nothing found!</li>;
+    if (!isPending && results?.length === 0)
+      return (
+        <li className="flex h-16 items-center justify-center font-medium text-neutral-700">
+          No result found
+        </li>
+      );
 
     return results.map((item) => (
       <SearchItem
