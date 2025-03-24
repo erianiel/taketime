@@ -11,7 +11,7 @@ const options = {
 export async function search(query, type) {
   const response = await fetch(
     `https://api.themoviedb.org/3/search/${type}?query=${query}`,
-    options
+    options,
   );
 
   if (!response.ok) {
@@ -24,7 +24,7 @@ export async function search(query, type) {
 export async function getShowById(id, showType) {
   const response = await fetch(
     `https://api.themoviedb.org/3/${showType}/${id}`,
-    options
+    options,
   );
 
   if (!response.ok) {
@@ -37,7 +37,7 @@ export async function getShowById(id, showType) {
 export async function getSeasonInfoById(id, seasonNumber) {
   const response = await fetch(
     `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}`,
-    options
+    options,
   );
 
   if (!response.ok) {

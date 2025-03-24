@@ -12,7 +12,7 @@ function InputSearch() {
   const [selectedShowType, setSelectedShowType] = useState(SHOW_TYPE.MOVIE);
   const [isOpen, setIsOpen] = useState(true);
 
-  const { isPending, results } = useSearch(
+  const { isPending, isError, results } = useSearch(
     debouncedSearchTerm,
     selectedShowType,
   );
@@ -68,6 +68,7 @@ function InputSearch() {
       />
       {searchTerm && isOpen && (
         <InputSearchResults
+          isError={isError}
           isPending={isPending}
           results={results?.results}
           onSelectItem={handleOnSelectItem}

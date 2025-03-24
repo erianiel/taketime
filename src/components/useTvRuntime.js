@@ -11,20 +11,24 @@ export function useTvRuntime(id, totalSeasons) {
     })),
   });
 
-  const isLoading = queries.every((query) => query.isLoading);
+  const isLoading = queries.some((query) => query.isLoading);
+  const isError = queries.some((query) => query.isError);
   const seasons = queries.map((query) => query.data);
+  let totalRuntime = 0;
 
-  const totalRuntime = seasons
-    .map((season) => {
-      const episodeRuntimeSum = season?.episodes.reduce((acc, episode) => {
-        return acc + episode.runtime;
+  if (!isError) {
+    totalRuntime = seasons
+      .map((season) => {
+        const episodeRuntimeSum = season?.episodes.reduce((acc, episode) => {
+          return acc + episode.runtime;
+        }, 0);
+
+        return episodeRuntimeSum;
+      })
+      .reduce((acc, runtime) => {
+        return acc + runtime;
       }, 0);
+  }
 
-      return episodeRuntimeSum;
-    })
-    .reduce((acc, runtime) => {
-      return acc + runtime;
-    }, 0);
-
-  return { isLoading, totalRuntime };
+  return { isLoading, isError, totalRuntime };
 }

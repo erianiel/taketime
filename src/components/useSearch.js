@@ -4,7 +4,7 @@ import { search } from "../services/apiMovies";
 export function useSearch(query, searchType) {
   const {
     isPending,
-    error,
+    isError,
     data: results,
   } = useQuery({
     queryKey: [query, searchType],
@@ -12,5 +12,5 @@ export function useSearch(query, searchType) {
     enabled: !!query,
   });
 
-  return { isPending, error, results };
+  return { isPending, isError, results };
 }

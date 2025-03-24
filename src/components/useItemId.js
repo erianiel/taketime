@@ -4,12 +4,12 @@ import { getShowById } from "../services/apiMovies";
 export function useItemId(id, showType) {
   const {
     isLoading,
-    error,
+    isError,
     data: item,
   } = useQuery({
     queryKey: [id],
     queryFn: () => getShowById(id, showType),
   });
 
-  return { isLoading, error, item };
+  return { isLoading, isError, item };
 }
