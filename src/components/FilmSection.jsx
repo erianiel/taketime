@@ -81,7 +81,7 @@ function FilmSection({ selectedId, showType }) {
             <div className="flex gap-1 text-xs sm:text-sm">
               {!isTvRuntimeError && !isShowLoading && (
                 <>
-                  <p className="text-neutral-700">End at</p>
+                  <p className="text-neutral-700">Ends on</p>
                   <p className="relative z-20 px-1 font-medium text-neutral-700 after:absolute after:left-0 after:top-0 after:-z-10 after:block after:h-full after:w-full after:bg-blue-200 after:opacity-70 after:content-[''] after:[transform:scale(0.99,1.05)_skewX(-15deg)]">
                     {computedCompletionDate.value}
                   </p>
