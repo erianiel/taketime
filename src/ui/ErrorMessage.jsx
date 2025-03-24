@@ -1,4 +1,4 @@
-function ErrorMessage({ message = "An error has occurred!" }) {
+function ErrorMessage({ message = "An error has occurred" }) {
   return <p className="font-medium text-pink-700">{message}</p>;
 }
 

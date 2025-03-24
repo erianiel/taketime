@@ -22,7 +22,6 @@ function SearchItem({ item, onSelectItem, selectedShowType }) {
           <span>
             {show.voteAverage ? formatVoteRate(show.voteAverage) : "--"}
           </span>
-          {/* <span>{formatVoteRate(show.voteAverage)}</span> */}
         </div>
       </div>
     </li>
