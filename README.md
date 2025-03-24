@@ -1,8 +1,20 @@
-# React + Vite
+# Taketime: movie and TV show time calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web app that helps you calculate how long it will take to binge a show, based on your available watch time.
 
-Currently, two official plugins are available:
+![alt homepage](docs/img/homepage.png "Homepage")
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
+
+- Users can set their _daily_, _weekly_, or _monthly_ viewing time for movies or TV shows.
+- Users can choose between _movies_ or _TV shows_, including series, anime, and other formats (talk shows, talent shows, makeovers, etc.).
+- The time calculator gives users two outputs: the whole duration of the show, and the estimated end date based on the chosen viewing time.
+- Some additional details about the movie or the TV show are also visible, such as the release year, number of seasons and rating.
+
+## 🧰 Tech stack
+
+- The Movie Database (TMDB) API
+- React and ReactDOM
+- TanStack Query React
+- Preact signals
+- Tailwind CSS
