@@ -8,9 +8,7 @@ function ReleaseInfo({ show, showType }) {
         <>
           <span>-</span>
           <span> {show.lastEpisode} </span>
-          {!show.inProduction && (
-            <span className="italic text-pink-600">(ended)</span>
-          )}
+          {!show.inProduction && <span className="text-pink-600">[ended]</span>}
         </>
       )}
     </p>
